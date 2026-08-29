@@ -1,0 +1,6 @@
+.DS_Store
+*.vmdk
+*.vdi
+*.ova
+*.7z
+*.zip
