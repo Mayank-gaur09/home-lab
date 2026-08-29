@@ -13,17 +13,15 @@ Hydra
 I initially tried SSH Brute-Forcing but was faced with a compatibility error since the modern Kali Linux does not support old MAC algorithms used by Metasploitable2's SSH server, which made me switch to FTP instead.
 I also tried brute-forcing the entire rockyou.txt against the FTP service which was extremely slow, so I used a smaller curated wordlist instead for the password and username using 'nano'.
 
-**To find the password** (known username, list of passwords)**
+**To find the password (known username, list of passwords)**
 
 
-
-​```bash
-hydra -l msfadmin -P password-list-test.txt 192.168.56.101 ftp
-​```
-
+```bash
+hydra -l msfadmin -P password-list-text.txt 192.168.56.101 ftp
+```
 
 
-**To find the username** (known password, list of usernames)**
+**To find the username (known password, list of usernames)**
 
 ```bash
 hydra -L username-list-text.txt -p msfadmin 192.168.56.101 ftp
