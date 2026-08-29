@@ -9,3 +9,5 @@ A hands on security lab built using VirtuslBox, which covers both offensive and 
 | 1 | Network Reconnaissance | Scanning the target machine using Nmap to identify any open ports and services | [link](./01-network-recon) |
 
 | 2 | Brute-Force Attack | Attempting to crack credentials using Hydra | [link](./02-bruteforce-attack) |
+
+| 3 | Vulnerability Exploitation | Attempting to exploit a vulnerability and gain direct access to the target machine | [link](./03-exploitation-weakness) |
