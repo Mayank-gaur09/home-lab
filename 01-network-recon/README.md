@@ -9,8 +9,8 @@ Nmap
 
 ## Steps Taken:
 
-''' bash 
-nmap -sV 192.168.56.101 
+'''bash
+nmap -sV 192.168.56.101
 '''
 
 ## Results:
