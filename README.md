@@ -5,7 +5,7 @@ A hands on security lab built using VirtuslBox, which covers both offensive and 
  
 ## Projects
 
------------------------------------
 
-1 | Network Reconnaissance | Scanning the target machine using Nmap to identify any open ports and services |
-2 | SSH Brute-Force Attack | Attempting to crack SSH credentials using Hydra |
+| 1 | Network Reconnaissance | Scanning the target machine using Nmap to identify any open ports and services | [link](./01-network-recon) |
+
+| 2 | Brute-Force Attack | Attempting to crack credentials using Hydra | [link](./02-bruteforce-attack) |
