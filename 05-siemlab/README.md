@@ -30,7 +30,7 @@ hydra -l Adminstrator -P /usr/share/wordlists/rockyou.txt rdp://192.168.1.65 -vV
 
 
 
-## Result:
+## Results:
 
 - The Wazuh dashboard chart showed massive, vertical spikes from 0 right when the Hydra hit.
 
@@ -49,11 +49,6 @@ hydra -l Adminstrator -P /usr/share/wordlists/rockyou.txt rdp://192.168.1.65 -vV
 
 
 
-
-
-
-
-## Results:
 
 
 
