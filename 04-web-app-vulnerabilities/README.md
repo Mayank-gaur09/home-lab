@@ -1,4 +1,4 @@
-# Web App Vulnerabilities - DVWA
+# Web Application Vulnerabilities - DVWA
 
 ## Objective:
 
