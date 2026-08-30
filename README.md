@@ -12,4 +12,4 @@ A hands on security lab built using VirtuslBox, which covers both offensive and 
 
 | 3 | Vulnerability Exploitation | Attempting to exploit a vulnerability and gain direct access to the target machine | [link](./03-exploitation-weakness) |
 
-| 4 | Web Application Vulnerabilities | To practice identify and exploit common web application vulnerabilities using the web application - DVWA | [link](./04-web-app-vulnerabilities) |
+| 4 | Web Application Vulnerabilities | To practice identify and exploit common web application vulnerabilities using the web application, DVWA | [link](./04-web-app-vulnerabilities) |
