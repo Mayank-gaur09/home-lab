@@ -1,4 +1,4 @@
-# Lab 1: Network Reconnaissance
+# Network Reconnaissance
 ## Objective of this lab: 
 
 To identify open ports and active services on the Metasploitable 2 target machine to recognize what is exposed before attempting any attacks.
