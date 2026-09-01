@@ -13,3 +13,7 @@ A hands on security lab built using VirtuslBox, which covers both offensive and 
 | 3 | Vulnerability Exploitation | Attempting to exploit a vulnerability and gain direct access to the target machine | [link](./03-exploitation-weakness) |
 
 | 4 | Web Application Vulnerabilities | To practice identify and exploit common web application vulnerabilities using the web app, DVWA | [link](./04-web-app-vulnerabilities) |
+
+| 5 | SIEM Detection & Monitoring Lab | Set up a security monitoring lab using Wazuh and targeted a target machine to detect attacks and generate logs | [link](./05-siemlab) |
+
+| 6 | Defensive Hardening With An Ubuntu Server | Attacked an Ubuntu server before and after applying hardening measures to show that hardening a server reduces the attack surface | [link](./06-defensive-hardening)|
