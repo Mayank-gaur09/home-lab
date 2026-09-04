@@ -3,14 +3,10 @@
 
 To attack a standard Ubuntu server with baseline tests and then apply hardening measures to the server, then repeat the exact same attacks as earlier to show that hardening reduces the attack surface.
 
-## Tools Used:
+## Environment
 
-- ssh-keygen & ssh-copy-id (SSH Key Authentication)
-- UFW (Firewall)
-- Hydra
-- Nmap
-- Ubuntu 26.04.1 LTS Server
-- Kali Linux
+- Ubuntu 26.04.1 LTS Server - the target machine
+- Kali Linux - where I ran attacks from
 
 
 
@@ -29,12 +25,10 @@ nmap -sV 192.168.56.104
 <img width="761" height="197" alt="image" src="https://github.com/user-attachments/assets/ce16f982-3b61-4209-a2b8-1513f229dac9" />
 
 
-- Showed that port 22 (ssh) was open and responsive.
+- Showed that port 22 (SSH) was open and responsive which was expected.
 
 
 ###  SSH Brute Force Attack
-
-
 
 
 - Used a small 10-list password against a deliberately weak password (password123) which was cracked pretty quickly.
@@ -59,11 +53,9 @@ hydra -l ubuntu-hardening -P password-list-test.txt ssh://192.168.56.104
 <img width="819" height="174" alt="image" src="https://github.com/user-attachments/assets/fb71bd97-9076-4034-89eb-f68e85626c6e" />
 
 
-
-
 ### Root Login Attempt
 
-- Rejected after a failed password attempt (no root password was set by default)
+- Rejected after a failed password attempt (no root password was set by default), but the path to root via SSH still existed.
 
 ```bash
 ssh root@192.168.56.104
@@ -71,7 +63,6 @@ ssh root@192.168.56.104
 
 
 <img width="299" height="135" alt="Screenshot 2026-08-30 163712" src="https://github.com/user-attachments/assets/0c676ff3-9b37-4ef7-9acd-4a79c47955b0" />
-
 
 
 
@@ -98,7 +89,6 @@ sudo ufw status verbose
 ```
 
 <img width="499" height="284" alt="Screenshot 2026-08-30 170411" src="https://github.com/user-attachments/assets/6b3af34e-e800-4974-b33a-d89c604c69d7" />
-
 
 
 
@@ -136,33 +126,29 @@ ssh-copy-id ubuntu-hardening@192.168.56.104
 
 - I disabled unnecessary services that were managing hardware and were not required in this VM since every running service is a potential attacking surface.
 
+- A cloud-init config file `/etc/ssh/sshd_config.d/50-cloud-init.conf` was overriding my SSH hardening and I was not being able to disable password authentication. I had to track it down and fix it too otherwise the hardening would have been being bypassed while it looked like it worked.
+
 
 <img width="807" height="74" alt="Screenshot 2026-08-30 184541" src="https://github.com/user-attachments/assets/c5f87e6f-897a-4155-b294-97ee2710458c" />
 
 
-
-## Attacking the server after it has been hardened
+## Andrew Hardening -
 
 ### Port scan
-
 
 - Port 22 is still shown as open since it was explicitly allowed through the firewall. The other 999 ports now report as filtered rather than closed.
 
 <img width="761" height="206" alt="Screenshot 2026-08-30 185010" src="https://github.com/user-attachments/assets/f7dcbce7-dbd5-443f-83b9-560cf27b4455" />
 
 
-
 ### SSH Brute Force Attack
-
 
 - Hydra did not even attempt a single password since `target does not support password authentication`, passwords are rejected and keys are used instead.
 
 <img width="1248" height="151" alt="Screenshot 2026-08-30 185049" src="https://github.com/user-attachments/assets/2fdcea4b-a2c8-4b7e-8adb-20b5026dbea2" />
 
 
-
 ### Root Login Attempt
-
 
 - The root login attempt is instantly rejected without a prompt to enter a password, since root login is explicitly forbidden and password authentication is also fully disabled so there's no remaining path to the root via SSH
 
@@ -170,13 +156,17 @@ ssh-copy-id ubuntu-hardening@192.168.56.104
 <img width="447" height="67" alt="Screenshot 2026-08-30 185521" src="https://github.com/user-attachments/assets/3ee41eeb-36b4-4fc2-bb31-b995fe61a02c" />
 
 
+## Why this is important:
+
+This is basically the same logic behind real-world hardening benchmarks like CIS benchmarks, removing unnecessary attack surface, enforce key based authentication over passwords and firewall everything by default. The brute force attempt here maps to MITRE ATT&CK T1110 Brute Force; disabling password authentication in favour of SSH keys directly closes off any attempts of brute-force attacks.
+
 
 ## What I learned:
 
 - Having a strong password alone isn't a complete defense, even though a weak password was cracked in seconds, but even the strong password was still a target until password authentication was disabled.
 - `ssh-keygen -t ed25519` to generate a modern and faster key compared to the default.
 - `ssh-copy-id` to install the SSH key onto the server as an authorized key, without requiring a password for each login.
-- paraphrase protecting a private key adds a second layer of protection, even if the key file was stolen.
+- Paraphrase protecting a private key adds a second layer of protection, even if the key file was stolen.
 
 
 
