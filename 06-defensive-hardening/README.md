@@ -132,7 +132,7 @@ ssh-copy-id ubuntu-hardening@192.168.56.104
 <img width="807" height="74" alt="Screenshot 2026-08-30 184541" src="https://github.com/user-attachments/assets/c5f87e6f-897a-4155-b294-97ee2710458c" />
 
 
-## Andrew Hardening -
+## After Hardening - Repeating the Same Attacks
 
 ### Port scan
 
