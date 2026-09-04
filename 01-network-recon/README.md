@@ -17,8 +17,19 @@ nmap -sV 192.168.56.101
 
 The scan revealed multiple open ports, several running outdated and vulnerable services - such as vsftpd 2.3.4 on port 21, which has a well known backdoor vulnerability that can be exploited.
 
+**Nmap scan output**
+
 
 <img width="850" height="600" alt="image" src="https://github.com/user-attachments/assets/24728e44-fda7-4175-8248-54d3931ce084" />
+
+
+## Why this is important:
+
+This is a real step attackers and pentesters start with, you cannot target a vulnerability you don't know exists. The fact that a signal scan showed the vulnerability which I later exploited shows recon actually points you toward where the real risk is.
+
+
+
+
 
 
 ## What I learned:
